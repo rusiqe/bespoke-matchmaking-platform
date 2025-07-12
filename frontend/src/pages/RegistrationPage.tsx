@@ -163,7 +163,7 @@ const RegistrationPage: React.FC = () => {
                                         control={control} 
                                         rules={{ required: 'First name is required' }}
                                         render={({ field }) => (
-                                            <Input {...field} label="First Name" error={errors.firstName?.message} />
+                                            <Input {...field} label="First Name" error={errors.firstName?.message as string} />
                                         )} 
                                     />
                                     <Controller 
@@ -171,7 +171,7 @@ const RegistrationPage: React.FC = () => {
                                         control={control} 
                                         rules={{ required: 'Last name is required' }}
                                         render={({ field }) => (
-                                            <Input {...field} label="Last Name" error={errors.lastName?.message} />
+                                            <Input {...field} label="Last Name" error={errors.lastName?.message as string} />
                                         )} 
                                     />
                                     <Controller 
@@ -185,7 +185,7 @@ const RegistrationPage: React.FC = () => {
                                             }
                                         }}
                                         render={({ field }) => (
-                                            <Input {...field} label="Email" type="email" error={errors.email?.message} />
+                                            <Input {...field} label="Email" type="email" error={errors.email?.message as string} />
                                         )} 
                                     />
                                     <Controller 
@@ -193,7 +193,7 @@ const RegistrationPage: React.FC = () => {
                                         control={control} 
                                         rules={{ required: 'Phone number is required' }}
                                         render={({ field }) => (
-                                            <Input {...field} label="Phone Number" type="tel" error={errors.phone?.message} />
+                                            <Input {...field} label="Phone Number" type="tel" error={errors.phone?.message as string} />
                                         )} 
                                     />
                                     <Controller 
@@ -201,7 +201,7 @@ const RegistrationPage: React.FC = () => {
                                         control={control} 
                                         rules={{ required: 'Date of birth is required' }}
                                         render={({ field }) => (
-                                            <Input {...field} label="Date of Birth" type="date" error={errors.dateOfBirth?.message} />
+                                            <Input {...field} label="Date of Birth" type="date" error={errors.dateOfBirth?.message as string} />
                                         )} 
                                     />
                                     <Controller 
@@ -209,7 +209,7 @@ const RegistrationPage: React.FC = () => {
                                         control={control} 
                                         rules={{ required: 'Location is required' }}
                                         render={({ field }) => (
-                                            <Input {...field} label="City, UK" placeholder="e.g., London, Manchester" error={errors.location?.message} />
+                                            <Input {...field} label="City, UK" placeholder="e.g., London, Manchester" error={errors.location?.message as string} />
                                         )} 
                                     />
                                     <Controller 
@@ -217,7 +217,7 @@ const RegistrationPage: React.FC = () => {
                                         control={control} 
                                         rules={{ required: 'Occupation is required' }}
                                         render={({ field }) => (
-                                            <Input {...field} label="Occupation" error={errors.occupation?.message} />
+                                            <Input {...field} label="Occupation" error={errors.occupation?.message as string} />
                                         )} 
                                     />
                                     <Controller 
@@ -522,7 +522,7 @@ const RegistrationPage: React.FC = () => {
                                                 <Checkbox 
                                                     {...field}
                                                     label="I agree to the privacy policy and terms of service. I understand that my information will be kept confidential and used only for matchmaking purposes."
-                                                    error={errors.privacyConsent?.message}
+                                                    error={errors.privacyConsent?.message as string}
                                                 />
                                             )} 
                                         />

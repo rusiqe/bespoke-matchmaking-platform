@@ -135,4 +135,37 @@
   .safe-space-indicator {
     @apply flex items-center gap-2 text-sm text-accent-sage-700 bg-accent-sage-50 px-3 py-2 rounded-lg border border-accent-sage-200;
   }
+
+  /* Calendar Custom Styles */
+  .custom-calendar {
+    @apply w-full border-none bg-transparent;
+  }
+
+  .custom-calendar .react-calendar__navigation {
+    @apply mb-4;
+  }
+
+  .custom-calendar .react-calendar__navigation button {
+    @apply text-lg font-semibold text-neutral-700 hover:text-primary-600 transition-colors;
+  }
+
+  .custom-calendar .react-calendar__month-view__weekdays {
+    @apply text-sm font-medium text-neutral-500;
+  }
+
+  .custom-calendar .react-calendar__tile {
+    @apply p-3 text-neutral-700 hover:bg-primary-50 hover:text-primary-600 transition-colors rounded-lg;
+  }
+
+  .custom-calendar .react-calendar__tile--active {
+    @apply bg-primary-600 text-white;
+  }
+
+  .custom-calendar .react-calendar__tile--now {
+    @apply bg-primary-100 text-primary-600;
+  }
+
+  .custom-calendar .react-calendar__tile:disabled {
+    @apply text-neutral-300 hover:bg-transparent hover:text-neutral-300 cursor-not-allowed;
+  }
 }

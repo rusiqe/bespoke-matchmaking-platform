@@ -9,7 +9,7 @@ interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>
 const Checkbox: React.FC<CheckboxProps> = ({ label, error, className, onChange, value, ...props }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
-      onChange(e.target.checked, value);
+      onChange(e.target.checked, typeof value === 'string' ? value : undefined);
     }
   };
 

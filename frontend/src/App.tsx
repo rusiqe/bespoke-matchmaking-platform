@@ -6,6 +6,7 @@ import { store } from './store';
 // Page Components
 import HomePage from './pages/HomePage';
 import RegistrationPage from './pages/RegistrationPage';
+import ThankYouPage from './pages/ThankYouPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<RegistrationPage />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
             <Route path="*" element={<div>Page not found</div>} />
           </Routes>
         </div>
