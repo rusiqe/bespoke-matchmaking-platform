@@ -1,1 +1,44 @@
-import React from 'react';\nimport clsx from 'clsx';\n\ninterface LoadingSpinnerProps {\n  size?: 'sm' | 'md' | 'lg' | 'xl';\n  color?: 'primary' | 'secondary' | 'white';\n  className?: string;\n}\n\nconst LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ \n  size = 'md', \n  color = 'primary',\n  className \n}) => {\n  const sizeClasses = {\n    sm: 'w-4 h-4 border-2',\n    md: 'w-6 h-6 border-2',\n    lg: 'w-8 h-8 border-2',\n    xl: 'w-12 h-12 border-4',\n  };\n\n  const colorClasses = {\n    primary: 'border-primary-500 border-t-transparent',\n    secondary: 'border-secondary-500 border-t-transparent',\n    white: 'border-white border-t-transparent',\n  };\n\n  return (\n    <div\n      className={clsx(\n        'animate-spin rounded-full',\n        sizeClasses[size],\n        colorClasses[color],\n        className\n      )}\n      role=\"status\"\n      aria-label=\"Loading...\"\n    >\n      <span className=\"sr-only\">Loading...</span>\n    </div>\n  );\n};\n\nexport default LoadingSpinner;
+import React from 'react';
+import clsx from 'clsx';
+
+interface LoadingSpinnerProps {
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  color?: 'primary' | 'secondary' | 'white';
+  className?: string;
+}
+
+const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ 
+  size = 'md', 
+  color = 'primary',
+  className 
+}) => {
+  const sizeClasses = {
+    sm: 'w-4 h-4 border-2',
+    md: 'w-6 h-6 border-2',
+    lg: 'w-8 h-8 border-2',
+    xl: 'w-12 h-12 border-4',
+  };
+
+  const colorClasses = {
+    primary: 'border-primary-500 border-t-transparent',
+    secondary: 'border-secondary-500 border-t-transparent',
+    white: 'border-white border-t-transparent',
+  };
+
+  return (
+    <div
+      className={clsx(
+        'animate-spin rounded-full',
+        sizeClasses[size],
+        colorClasses[color],
+        className
+      )}
+      role="status"
+      aria-label="Loading..."
+    >
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
+};
+
+export default LoadingSpinner;

@@ -1,1 +1,48 @@
-import React from 'react';\nimport { Navigate, useLocation } from 'react-router-dom';\nimport { useAppSelector } from '../../store';\nimport LoadingSpinner from '../ui/LoadingSpinner';\n\ninterface ProtectedRouteProps {\n  children: React.ReactNode;\n  requireEmailVerification?: boolean;\n  requireProfileCompletion?: boolean;\n}\n\nconst ProtectedRoute: React.FC<ProtectedRouteProps> = ({ \n  children, \n  requireEmailVerification = false,\n  requireProfileCompletion = false \n}) => {\n  const location = useLocation();\n  const { isAuthenticated, loading, user } = useAppSelector((state) => state.auth);\n\n  // Show loading spinner while checking authentication\n  if (loading) {\n    return (\n      <div className=\"min-h-screen flex items-center justify-center\">\n        <LoadingSpinner size=\"lg\" />\n      </div>\n    );\n  }\n\n  // Redirect to login if not authenticated\n  if (!isAuthenticated) {\n    return <Navigate to=\"/login\" state={{ from: location }} replace />;\n  }\n\n  // Check email verification requirement\n  if (requireEmailVerification && user && !user.isEmailVerified) {\n    return <Navigate to=\"/verify-email\" replace />;\n  }\n\n  // Check profile completion requirement\n  if (requireProfileCompletion && user && !user.isProfileComplete) {\n    return <Navigate to=\"/onboarding\" replace />;\n  }\n\n  return <>{children}</>;\n};\n\nexport default ProtectedRoute;
+import React from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAppSelector } from '../../store';
+import LoadingSpinner from '../ui/LoadingSpinner';
+
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+  requireEmailVerification?: boolean;
+  requireProfileCompletion?: boolean;
+}
+
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ 
+  children, 
+  requireEmailVerification = false,
+  requireProfileCompletion = false 
+}) => {
+  const location = useLocation();
+  const { isAuthenticated, loading, user } = useAppSelector((state) => state.auth);
+
+  // Show loading spinner while checking authentication
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <LoadingSpinner size="lg" />
+      </div>
+    );
+  }
+
+  // Redirect to login if not authenticated
+  if (!isAuthenticated) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  // Check email verification requirement
+  if (requireEmailVerification && user && !user.isEmailVerified) {
+    return <Navigate to="/verify-email" replace />;
+  }
+
+  // Check profile completion requirement
+  // TODO: Implement profile completion check when profile structure is finalized
+  // if (requireProfileCompletion && user && !user.isProfileComplete) {
+  //   return <Navigate to="/onboarding" replace />;
+  // }
+
+  return <>{children}</>;
+};
+
+export default ProtectedRoute;

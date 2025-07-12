@@ -1,9 +1,42 @@
-@import './styles/tailwind.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 antialiased;
+    font-family: theme('fontFamily.sans');
+  }
+
+  a {
+    @apply text-primary-500 hover:text-primary-600;
+  }
+
+  table {
+    @apply border-collapse border-spacing-0;
+  }
+
+  th {
+    @apply text-left py-3 px-4 font-medium;
+  }
+
+  td {
+    @apply border-t py-2 px-4;
+  }
+
+  textarea {
+    @apply resize-none;
+  }
+}
 
 /* Custom component styles */
 @layer components {
