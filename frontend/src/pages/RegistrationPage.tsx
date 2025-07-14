@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Input, Select, Checkbox, Button, TextArea } from '../components/ui';
 import { UserIcon, HeartIcon, ShieldCheckIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import { createProjectFromRegistration, RegistrationData } from '../services/asanaService';
+import toast from 'react-hot-toast';
 
 const RegistrationPage: React.FC = () => {
     const { control, handleSubmit, watch, formState: { errors } } = useForm();
@@ -18,12 +20,53 @@ const RegistrationPage: React.FC = () => {
         setIsSubmitting(true);
         console.log('Registration data:', data);
         
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        
-        // Navigate to thank you page
-        navigate('/thank-you');
-        setIsSubmitting(false);
+        try {
+            // Create Asana project with registration data
+            const registrationData: RegistrationData = {
+                firstName: data.firstName || '',
+                lastName: data.lastName || '',
+                email: data.email || '',
+                phone: data.phone || '',
+                dateOfBirth: data.dateOfBirth || '',
+                location: data.location || '',
+                occupation: data.occupation || '',
+                education: data.education || '',
+                culturalBackground: data.culturalBackground || '',
+                lifeGoals: data.lifeGoals || '',
+                values: data.values || '',
+                relationshipHistory: data.relationshipHistory || '',
+                hasChildren: data.hasChildren || '',
+                wantsChildren: data.wantsChildren || '',
+                clientType: data.clientType || '',
+                executiveDetails: data.executiveDetails,
+                creativeDetails: data.creativeDetails,
+                preferences: data.preferences || [],
+                dealbreakers: data.dealbreakers || [],
+                additionalPreferences: data.additionalPreferences || '',
+                ageRangeMin: data.ageRangeMin || '',
+                ageRangeMax: data.ageRangeMax || '',
+                referralSource: data.referralSource || '',
+                referralDetails: data.referralDetails,
+                referralOther: data.referralOther,
+                eventAttended: data.eventAttended || '',
+                expectations: data.expectations || '',
+                timeframe: data.timeframe || '',
+                privacyConsent: data.privacyConsent || false,
+            };
+            
+            const project = await createProjectFromRegistration(registrationData);
+            
+            toast.success('Registration submitted successfully! Your Asana project has been created.');
+            console.log('Asana project created:', project);
+            
+            // Navigate to thank you page
+            navigate('/thank-you');
+        } catch (error) {
+            console.error('Error submitting registration:', error);
+            toast.error('Failed to submit registration. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const nextStep = () => {
