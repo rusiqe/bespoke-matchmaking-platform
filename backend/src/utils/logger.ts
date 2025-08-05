@@ -63,7 +63,7 @@ const transports = [
 
 // Create logger instance
 export const logger = winston.createLogger({
-  level: config.monitoring.logLevel,
+  level: 'info',
   levels,
   format,
   transports,

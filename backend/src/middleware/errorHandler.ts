@@ -117,7 +117,7 @@ const handleMongooseError = (error: any): AppError => {
   if (error.code === 11000) {
     // Duplicate key error
     const field = Object.keys(error.keyValue)[0];
-    return new ValidationError('Duplicate entry', { [field]: 'Already exists' });
+    return new ValidationError('Duplicate entry', { [field?.toString() || 'unknown']: 'Already exists' });
   }
   
   return new AppError('Database operation failed', 500, false);
