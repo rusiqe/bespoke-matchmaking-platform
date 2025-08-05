@@ -75,6 +75,12 @@ const HomePage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
+              <div className="mb-4">
+                <h2 className="text-2xl lg:text-3xl font-display font-light text-neutral-700 mb-2">
+                  Zuri Oasis Elite
+                  <span className="block text-lg font-normal text-neutral-500 italic">i see you</span>
+                </h2>
+              </div>
               <h1 className="text-5xl lg:text-6xl font-display font-bold text-neutral-900 leading-tight">
                 Find Your
                 <span className="text-gradient block">Perfect Match</span>

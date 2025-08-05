@@ -14,6 +14,12 @@ const RegistrationPage: React.FC = () => {
         <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 py-12">
             <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
+                    <div className="mb-4">
+                        <h2 className="text-2xl font-display font-light text-neutral-700 mb-2">
+                            Zuri Oasis Elite
+                            <span className="block text-lg font-normal text-neutral-500 italic">i see you</span>
+                        </h2>
+                    </div>
                     <h1 className="text-4xl font-display font-bold text-neutral-900 mb-4">
                         Get Started with Matchmaking
                     </h1>
