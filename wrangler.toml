@@ -1,0 +1,9 @@
+name = "zuri-oasis-elite"
+compatibility_date = "2024-01-01"
+
+[env.production]
+name = "zuri-oasis-elite"
+
+[[env.production.routes]]
+pattern = "zurioasiselite.icu/*"
+zone_name = "zurioasiselite.icu"
