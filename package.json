@@ -43,7 +43,9 @@
     "setup": "npm run install:all && npm run setup:env",
     "setup:env": "cp backend/.env.example backend/.env && cp frontend/.env.example frontend/.env",
     "deploy:staging": "npm run build && npm run deploy:staging:backend && npm run deploy:staging:frontend",
-    "deploy:production": "npm run build && npm run deploy:production:backend && npm run deploy:production:frontend"
+    "deploy:production": "npm run build && npm run deploy:production:backend && npm run deploy:production:frontend",
+    "deploy:pages": "npm run build:frontend && wrangler pages deploy frontend/build",
+    "deploy:pages:production": "npm run build:frontend && wrangler pages deploy frontend/build --env production"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",

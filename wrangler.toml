@@ -1,6 +1,10 @@
 name = "zuri-oasis-elite"
 compatibility_date = "2024-01-01"
 
+[build]
+command = "npm run build:frontend"
+publish = "frontend/build"
+
 [env.production]
 name = "zuri-oasis-elite"
 
